@@ -6,7 +6,24 @@
     <link href="studentinfo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+
+<div id="inputfield">
+    <fieldset id="tab2"> <br>
+        <legend></legend>
+        <h4>User Details</h4>
+        FirstName:<input type="text" name="fname" id="fname" class="inputtext"><br><br>
+        LastName:<input type="text" name="lname" id="lname" class="inputtext"><br><br>
+        DateOfBirth: <input type="text" name="age" id="age" class="inputtext"><br><br>
+        <button onclick="addTableRow()" class="btn">Add</button>
+        <button onclick="hidedetails()" class="btn">cancel</button>
+    </fieldset>
+</div>
+
 <div class="container">
+
+    <input type="button" value="NewUser" onclick="showdetails()" id="newuserbtn">
+    <input type="button" value="EditUser" onclick="editTableContent()" id="edituserbtn">
+    <h1><span>Student Information</span></h1>
     <div class="tab tab-1">
         <table id="table" border="1">
             <tr>
@@ -15,30 +32,33 @@
                 <th>DateOfBirth</th>
             </tr>
             <tr>
-                <td>h1</td>
-                <td>b4</td>
-                <td>gt</td>
+                <td>Revathi</td>
+                <td>Chittepureddy</td>
+                <td>01/06/1993</td>
             </tr>
             <tr>
-                <td>h7</td>
-                <td>b8</td>
-                <td>gt0</td>
+                <td>sanket</td>
+                <td>Pagal No1</td>
+                <td>03/04/1987</td>
             </tr>
             <tr>
-                <td>h1u</td>
-                <td>b4kk</td>
-                <td>gtll</td>
+                <td>devyani</td>
+                <td>deshmukh</td>
+                <td>2/3/1998</td>
+            </tr>
+            <tr>
+                <td>grevil</td>
+                <td>gavar</td>
+                <td>4/5/1987</td>
             </tr>
         </table>
     </div>
-    <div class="tab tab-2">
-        FirstName:<input type="text" name="fname" id="fname">
-        LastName:<input type="text" name="lname" id="lname">
-        DateOfBirth: <input type="text" name="age" id="age">
-        <button onclick="addTableRow()">ADD</button>
-        <button onclick="editTableContent()">Edit</button>
-    </div>
+
 </div>
+
+
+
+
 <script>
 
     var rIndex,table = document.getElementById("table");
@@ -56,6 +76,7 @@
           cell2.innerHTML = lname;
           cell3.innerHTML = age;
         selectedRowToInput();
+        clearcontent();
         
     }
     
@@ -85,7 +106,31 @@
         table.rows[rIndex].cells[1].innerHTML = lname;
         table.rows[rIndex].cells[2].innerHTML = age;
 
+   clearcontent();
     }
+
+    function clearcontent() {
+       // alert("hii");
+        document.getElementById("fname").value = " ";
+        document.getElementById("lname").value = " ";
+        document.getElementById("age").value = " ";
+
+
+    }
+
+    function showdetails() {
+        document.getElementById("inputfield").style.display = "block";
+
+    }
+
+
+    function hidedetails() {
+        document.getElementById("inputfield").style.display = "none";
+        clearcontent();
+
+    }
+
+
 </script>
 </body>
 </html>
