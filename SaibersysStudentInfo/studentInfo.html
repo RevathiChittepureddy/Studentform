@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Info</title>
+    <link href="studentinfo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+    <div class="tab tab-1">
+        <table id="table" border="1">
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>DateOfBirth</th>
+            </tr>
+            <tr>
+                <td>h1</td>
+                <td>b4</td>
+                <td>gt</td>
+            </tr>
+            <tr>
+                <td>h7</td>
+                <td>b8</td>
+                <td>gt0</td>
+            </tr>
+            <tr>
+                <td>h1u</td>
+                <td>b4kk</td>
+                <td>gtll</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab tab-2">
+        FirstName:<input type="text" name="fname" id="fname">
+        LastName:<input type="text" name="lname" id="lname">
+        DateOfBirth: <input type="text" name="age" id="age">
+        <button onclick="addTableRow()">ADD</button>
+        <button onclick="editTableContent()">Edit</button>
+    </div>
+</div>
+<script>
+
+    var rIndex,table = document.getElementById("table");
+
+    function addTableRow() {
+        var newRow = table.insertRow(table.length),
+            cell1 = newRow.insertCell(0),
+            cell2 = newRow.insertCell(1),
+            cell3 = newRow.insertCell(2),
+            fname = document.getElementById("fname").value,
+            lname = document.getElementById("lname").value,
+            age = document.getElementById("age").value;
+
+          cell1.innerHTML = fname;
+          cell2.innerHTML = lname;
+          cell3.innerHTML = age;
+        selectedRowToInput();
+        
+    }
+    
+    function selectedRowToInput() {
+
+        for(var i = 1; i < table.rows.length;i++){
+            table.rows[i].onclick = function () {
+                rIndex = this.rowIndex;
+                console.log(rIndex);
+                document.getElementById("fname").value = this.cells[0].innerHTML;
+                document.getElementById("lname").value = this.cells[1].innerHTML;
+                document.getElementById("age").value = this.cells[2].innerHTML;
+
+            };
+
+        }
+        
+    }
+    selectedRowToInput();
+
+    function editTableContent() {
+        var fname = document.getElementById("fname").value,
+            lname = document.getElementById("lname").value,
+            age = document.getElementById("age").value;
+
+        table.rows[rIndex].cells[0].innerHTML = fname;
+        table.rows[rIndex].cells[1].innerHTML = lname;
+        table.rows[rIndex].cells[2].innerHTML = age;
+
+    }
+</script>
+</body>
+</html>
